@@ -107,6 +107,11 @@ class NumberBaseballGameActivity : BaseActivity() {
         Log.d("스트라이크", strikeCount.toString())
         Log.d("볼", ballCount.toString())
 
+//        CPU가 말해주는 양식으로 리싸이클러뷰에 추가.
+        val cpuChat = ChatData( "CPU", "${strikeCount}S ${ballCount}B 입니다." )
+        mChatList.add(cpuChat)
+        mAdapter.notifyDataSetChanged()
+
     }
 
     override fun setValues() {
