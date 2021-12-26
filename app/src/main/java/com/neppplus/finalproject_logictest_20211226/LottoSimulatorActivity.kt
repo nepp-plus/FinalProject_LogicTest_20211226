@@ -97,9 +97,20 @@ class LottoSimulatorActivity : BaseActivity() {
         else if (correctCount == 5) {
 
 //            보너스 번호 추가 검사.
+//            보너스번호가 => 내 숫자 안에 들어있는가? 들어있다면, 맞춘상황.
 
-            rankCount3++
-            earnMoney += 1500000  // 번 돈을 150만원 증가.
+            if ( myNumberList.contains(bonusNum) ) {
+//                2등!
+                rankCount2++
+                earnMoney += 50000000 // 번 돈을 5천만원 증가.
+            }
+            else {
+//                3등
+                rankCount3++
+                earnMoney += 1500000  // 번 돈을 150만원 증가.
+            }
+
+
         }
         else if (correctCount == 4) {
             rankCount4++
