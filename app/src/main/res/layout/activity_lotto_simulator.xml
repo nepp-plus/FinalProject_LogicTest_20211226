@@ -128,7 +128,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnBuytLotto"
+            android:id="@+id/btnBuyLotto"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
