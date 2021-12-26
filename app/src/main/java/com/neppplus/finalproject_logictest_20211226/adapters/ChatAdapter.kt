@@ -22,6 +22,25 @@ class ChatAdapter(
         fun bind( data: ChatData ) {
 //            실제 데이터 반영 함수
 
+//            CPU가 말한 내용? 사용자 메세지 텍스트뷰 숨김, CPU 텍스트뷰는 보여주기.
+
+            if (data.owner == "CPU") {
+
+                txtUserMessage.visibility = View.GONE
+                txtCpuMessage.visibility = View.VISIBLE
+
+                txtCpuMessage.text = data.message
+
+            }
+            else {
+
+                txtCpuMessage.visibility = View.GONE
+                txtUserMessage.visibility = View.VISIBLE
+
+                txtUserMessage.text = data.message
+
+            }
+
         }
 
     }
