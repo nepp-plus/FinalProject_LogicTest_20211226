@@ -41,6 +41,9 @@ class LottoSimulatorActivity : BaseActivity() {
     var myMoney = 10000000  // 1천만원 ~ 0원까지.
     var earnMoney = 0L  // 0을 대입 : Int다.  10억단위 숫자도 표현하려고 Long으로 대입.
 
+//    지금 자동구매가 진행중인지 기록해둘 변수
+    var isAutoNow = false
+
 //    Handler를 이용해서 한번구매 후의 다음 할일로 다시 구매를 등록하는 방식.
 
     lateinit var myHandler : Handler
@@ -83,10 +86,29 @@ class LottoSimulatorActivity : BaseActivity() {
 
         binding.btnAutoMode.setOnClickListener {
 
+//            자동구매가 돌고있지 않을때 -> 시작
+
+            if (!isAutoNow) {
 //            반복 구매 프로세스를 변수에 저장해둠. (buyLottoRunnable)
 //            myHandler가 해당 프로세스를 시작하도록.
 
-            myHandler.post(buyLottoRunnable)
+                myHandler.post(buyLottoRunnable)
+
+                isAutoNow = true
+
+            }
+            else {
+
+//                이미 자동 구매 진행 중. -> 반복 중단.
+//                다음 할 일 (구매 프로세스) 로 등록된 Runnable을 제거.
+
+                myHandler.removeCallbacks(buyLottoRunnable)
+
+                isAutoNow = false
+
+            }
+
+
 
         }
 
