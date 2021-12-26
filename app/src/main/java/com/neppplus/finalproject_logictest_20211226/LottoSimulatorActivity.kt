@@ -78,7 +78,13 @@ class LottoSimulatorActivity : BaseActivity() {
 
         }
 
-//        6개의 당첨번호를 로그로 확인 + 텍스트뷰에 반영.
+//        당첨번호 6개를 => 작은 수 ~ 큰 수 (오름차순) 정렬
+
+        winNumberList.sort()
+
+
+
+//       6개의 당첨번호를 로그로 확인 + 텍스트뷰에 반영.
         winNumberList.forEachIndexed { index, winNum ->
 
             winNumberTxtList[index].text = winNum.toString()
