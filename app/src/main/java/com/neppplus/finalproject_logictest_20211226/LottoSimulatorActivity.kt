@@ -83,19 +83,10 @@ class LottoSimulatorActivity : BaseActivity() {
 
         binding.btnAutoMode.setOnClickListener {
 
-//            임시 코드. 소지금액이 0이 될때까지 반복.
-            while (true) {
+//            반복 구매 프로세스를 변수에 저장해둠. (buyLottoRunnable)
+//            myHandler가 해당 프로세스를 시작하도록.
 
-                makeWinNumbers()
-                checkLottoRank()
-
-                if (myMoney <= 0) {
-//                    돈을 다 쓴 상황.
-                    Toast.makeText(mContext, "소지 금액을 모두 사용했습니다.", Toast.LENGTH_SHORT).show()
-                    break
-                }
-
-            }
+            myHandler.post(buyLottoRunnable)
 
         }
 
