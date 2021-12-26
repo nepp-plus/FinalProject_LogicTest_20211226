@@ -7,6 +7,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.finalproject_logictest_20211226.databinding.ActivityLottoSimulatorBinding
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class LottoSimulatorActivity : BaseActivity() {
 
@@ -28,6 +31,10 @@ class LottoSimulatorActivity : BaseActivity() {
     var rankCount4 = 0
     var rankCount5 = 0
     var rankCountNone = 0
+
+//    소지 금액 / 당첨 금액
+    var myMoney = 10000000  // 1천만원 ~ 0원까지.
+    var earnMoney = 0L  // 0을 대입 : Int다.  10억단위 숫자도 표현하려고 Long으로 대입.
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +59,10 @@ class LottoSimulatorActivity : BaseActivity() {
 
     fun checkLottoRank() {
 
+//        1천원 소진.
+        myMoney -=  1000
+
+
 //        내번호를 들고 => 당첨번호를 둘러보면서 => 같은 숫자가 몇개인가? 체크.
 
         var correctCount = 0  // 맞춘 숫자 기록용 변수
@@ -75,25 +86,39 @@ class LottoSimulatorActivity : BaseActivity() {
 //        correctCount에 몇개를 맞췄는지 기록되어있다. => 등수 판단에 활용하자.
 
         if (correctCount == 6) {
-            Toast.makeText(mContext, "1등", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(mContext, "1등", Toast.LENGTH_SHORT).show()
             rankCount1++
+
+            earnMoney += 2000000000  // 번돈을 20억 증가.
         }
         else if (correctCount == 5) {
-            Toast.makeText(mContext, "임시- 3등", Toast.LENGTH_SHORT).show()
+
             rankCount3++
+            earnMoney += 1500000  // 번 돈을 150만원 증가.
         }
         else if (correctCount == 4) {
-            Toast.makeText(mContext, "4등", Toast.LENGTH_SHORT).show()
             rankCount4++
+
+            earnMoney += 50000 // 번 돈 5만원 증가
+
         }
         else if (correctCount == 3) {
-            Toast.makeText(mContext, "5등", Toast.LENGTH_SHORT).show()
             rankCount5++
+
+//            돈으로 받지않는다. => 내 돈 (로또 구매 자금) 을 5천원 증가.
+//            당첨금액은 늘리지 않는다.
+
+            myMoney += 5000 // 로또 5천원 추가 구매
+
         }
         else {
-            Toast.makeText(mContext, "낙첨", Toast.LENGTH_SHORT).show()
             rankCountNone++
+//            낙첨은 자금 변동 없다.
         }
+
+//        자금 변동 사항도 텍스트뷰에 반영.
+        binding.txtMyMoney.text = "소지 금액 : ${ NumberFormat.getInstance(Locale.KOREA).format(myMoney) }원"
+        binding.txtEarnMoney.text = "당첨 금액 : ${ NumberFormat.getInstance(Locale.KOREA).format(earnMoney) }원"
 
 //        새로 변경된 당첨횟수들을 텍스트뷰에 반영
         binding.txtRankCount1.text = "1등 : ${rankCount1}회"

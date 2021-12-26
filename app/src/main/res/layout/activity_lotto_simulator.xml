@@ -134,6 +134,28 @@
             android:layout_height="wrap_content"
             android:text="로또 한장 구매하기" />
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자본 관련"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/txtMyMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="소지 금액 : 10,000,000원"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/txtEarnMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="당첨 금액 : 0원"
+            android:layout_marginTop="5dp"/>
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
