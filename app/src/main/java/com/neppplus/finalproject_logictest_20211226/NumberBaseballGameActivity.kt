@@ -112,6 +112,20 @@ class NumberBaseballGameActivity : BaseActivity() {
         mChatList.add(cpuChat)
         mAdapter.notifyDataSetChanged()
 
+//        혹시 정답인지?
+        if (strikeCount == 3) {
+
+//            CPU가 정답 축하 메세지.
+            val cpuChat2 = ChatData( "CPU", "축하합니다! 정답을 맞췄습니다." )
+            mChatList.add(cpuChat2)
+            mAdapter.notifyDataSetChanged()
+
+//            입력칸 막아주기.
+            binding.edtNumber.isEnabled = false
+            binding.btnSend.isEnabled = false
+
+        }
+
     }
 
     override fun setValues() {
