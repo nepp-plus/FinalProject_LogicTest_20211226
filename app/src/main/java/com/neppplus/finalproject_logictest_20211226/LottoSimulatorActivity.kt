@@ -21,6 +21,14 @@ class LottoSimulatorActivity : BaseActivity() {
 //    당첨번호를 표시할 텍스트뷰 목록 => xml의 텍스트뷰 목록.
     val winNumberTxtList = ArrayList<TextView>()
 
+//    각 등수별 당첨횟수를 기록.
+    var rankCount1 = 0
+    var rankCount2 = 0
+    var rankCount3 = 0
+    var rankCount4 = 0
+    var rankCount5 = 0
+    var rankCountNone = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,20 +76,32 @@ class LottoSimulatorActivity : BaseActivity() {
 
         if (correctCount == 6) {
             Toast.makeText(mContext, "1등", Toast.LENGTH_SHORT).show()
+            rankCount1++
         }
         else if (correctCount == 5) {
             Toast.makeText(mContext, "임시- 3등", Toast.LENGTH_SHORT).show()
+            rankCount3++
         }
         else if (correctCount == 4) {
             Toast.makeText(mContext, "4등", Toast.LENGTH_SHORT).show()
+            rankCount4++
         }
         else if (correctCount == 3) {
             Toast.makeText(mContext, "5등", Toast.LENGTH_SHORT).show()
+            rankCount5++
         }
         else {
             Toast.makeText(mContext, "낙첨", Toast.LENGTH_SHORT).show()
+            rankCountNone++
         }
 
+//        새로 변경된 당첨횟수들을 텍스트뷰에 반영
+        binding.txtRankCount1.text = "1등 : ${rankCount1}회"
+        binding.txtRankCount2.text = "2등 : ${rankCount2}회"
+        binding.txtRankCount3.text = "3등 : ${rankCount3}회"
+        binding.txtRankCount4.text = "4등 : ${rankCount4}회"
+        binding.txtRankCount5.text = "5등 : ${rankCount5}회"
+        binding.txtRankCountNone.text = "낙첨 : ${rankCountNone}회"
 
     }
 
