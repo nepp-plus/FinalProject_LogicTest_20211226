@@ -49,6 +49,24 @@ class LottoSimulatorActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnAutoMode.setOnClickListener {
+
+//            임시 코드. 소지금액이 0이 될때까지 반복.
+            while (true) {
+
+                makeWinNumbers()
+                checkLottoRank()
+
+                if (myMoney <= 0) {
+//                    돈을 다 쓴 상황.
+                    Toast.makeText(mContext, "소지 금액을 모두 사용했습니다.", Toast.LENGTH_SHORT).show()
+                    break
+                }
+
+            }
+
+        }
+
         binding.btnBuyLotto.setOnClickListener {
 
 //            당첨번호 만들기 기능 실행.
