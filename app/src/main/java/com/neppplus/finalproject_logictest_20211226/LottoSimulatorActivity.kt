@@ -37,6 +37,9 @@ class LottoSimulatorActivity : BaseActivity() {
 
     fun makeWinNumbers() {
 
+//        당첨 번호 생성 전에, 기존의 당첨번호는 모두 삭제.
+        winNumberList.clear()
+
 //      6번 반복 => 당첨번호 6개 생성.
         for (i  in  0 until 6) {
 
@@ -52,15 +55,28 @@ class LottoSimulatorActivity : BaseActivity() {
 
 
 //            2. 나온 랜덤값이 중복인가?
+//                당첨번호 목록에, 지금뽑은 랜덤값이 이미 있는가? => 사용하면 안됨.
+//                들어있지 않아야 => 사용 가능.
+
+                val isDuplOk =  !winNumberList.contains(randomNum)
+
 //            3. 중복이 아니면 (써도 된다면) winNumberList에 등록(추가)
 //                => 다음 숫자 뽑으러 넘어가자.
 //                => while무한반복 강제종료 => for문에 의해서 다음 숫자를 뽑으러 이동.
 
+                if (isDuplOk) {
+                    winNumberList.add( randomNum )
+
+                    break // 제일 가까운 반복문 강제 종료.
+                }
 
             }
 
+        }
 
-
+//        6개의 당첨번호를 로그로 확인
+        for (winNum  in  winNumberList) {
+            Log.d("당첨번호", winNum.toString())
         }
 
     }
