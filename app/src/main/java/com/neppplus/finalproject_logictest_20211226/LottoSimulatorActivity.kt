@@ -34,8 +34,37 @@ class LottoSimulatorActivity : BaseActivity() {
 
 //            당첨번호 만들기 기능 실행.
             makeWinNumbers()
+//            등수 체크 기능 실행
+            checkLottoRank()
 
         }
+
+    }
+
+    fun checkLottoRank() {
+
+//        내번호를 들고 => 당첨번호를 둘러보면서 => 같은 숫자가 몇개인가? 체크.
+
+        var correctCount = 0  // 맞춘 숫자 기록용 변수
+
+        for (myNum  in  myNumberList) {
+
+//            내 번호 하나 꺼내면 => 당첨번호 6개를 돌아보자.
+
+            for (winNum  in winNumberList) {
+
+//                내 번호와, 당첨번호가 같은가? => 같다면, 맞춘 갯수 추가.
+                if (myNum == winNum) {
+                    correctCount++  // 기존 저장 값에서 1 증가.
+                }
+
+            }
+
+        }
+
+
+//        correctCount에 몇개를 맞췄는지 기록되어있다. => 등수 판단에 활용하자.
+
 
     }
 
