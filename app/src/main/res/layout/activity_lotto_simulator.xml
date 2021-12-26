@@ -134,5 +134,54 @@
             android:layout_height="wrap_content"
             android:text="로또 한장 구매하기" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="당첨 횟수" />
+
+        <TextView
+            android:id="@+id/txtRankCount1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="1등 : 0회" />
+
+        <TextView
+            android:id="@+id/txtRankCount2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="2등 : 0회" />
+
+        <TextView
+            android:id="@+id/txtRankCount3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="3등 : 0회" />
+
+        <TextView
+            android:id="@+id/txtRankCount4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="4등 : 0회" />
+
+        <TextView
+            android:id="@+id/txtRankCount5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="5등 : 0회" />
+
+        <TextView
+            android:id="@+id/txtRankCountNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="낙첨 : 0회" />
+
+
     </LinearLayout>
 </layout>
