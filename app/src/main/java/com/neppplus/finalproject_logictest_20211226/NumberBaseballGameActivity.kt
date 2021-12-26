@@ -73,6 +73,40 @@ class NumberBaseballGameActivity : BaseActivity() {
             Log.d("내 숫자", num.toString())
         }
 
+//        내 숫자 3개 / CPU 숫자 3개 => s / b 갯수 판별
+        var strikeCount = 0
+        var ballCount = 0
+
+//        반복 검사 => 실제 데이터 + 위치값
+
+        myNumbers.forEachIndexed { myIndex, myNum ->
+
+//            내 숫자 하나당 => CPU 숫자 세개 검사.
+
+            cpuNumbers.forEachIndexed { cpuIndex, cpuNum ->
+
+//                S/B => 숫자는 같아야 판단.
+                if (myNum == cpuNum) {
+//                    같은 숫자 발견!
+//                    추가 질문. => 위치도 같은가? 같으면 S / 다르면 B
+                    if (myIndex == cpuIndex) {
+                        strikeCount++
+                    }
+                    else {
+//                        위치는 다르지만, 숫자는 같다. B
+                        ballCount++
+                    }
+
+                }
+
+            }
+
+        }
+
+//        ?S ?B 모두 구해냄
+        Log.d("스트라이크", strikeCount.toString())
+        Log.d("볼", ballCount.toString())
+
     }
 
     override fun setValues() {
