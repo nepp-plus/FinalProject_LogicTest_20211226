@@ -2,6 +2,8 @@ package com.neppplus.finalproject_logictest_20211226
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
@@ -38,6 +40,10 @@ class LottoSimulatorActivity : BaseActivity() {
 //    소지 금액 / 당첨 금액
     var myMoney = 10000000  // 1천만원 ~ 0원까지.
     var earnMoney = 0L  // 0을 대입 : Int다.  10억단위 숫자도 표현하려고 Long으로 대입.
+
+//    Handler를 이용해서 한번구매 후의 다음 할일로 다시 구매를 등록하는 방식.
+
+    lateinit var myHandler : Handler
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -249,6 +255,9 @@ class LottoSimulatorActivity : BaseActivity() {
         winNumberTxtList.add( binding.txtWinNum4 )
         winNumberTxtList.add( binding.txtWinNum5 )
         winNumberTxtList.add( binding.txtWinNum6 )
+
+//        반복 구매 업무를 관리하는 핸들러 생성
+        myHandler = Handler(Looper.getMainLooper())
 
     }
 }
