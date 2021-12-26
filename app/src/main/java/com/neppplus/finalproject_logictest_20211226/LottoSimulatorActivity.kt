@@ -45,6 +45,32 @@ class LottoSimulatorActivity : BaseActivity() {
 
     lateinit var myHandler : Handler
 
+//    로또 한장을 구매하는 프로세스를 => 핸들러가 처리할 수 있는 일로써 보관. (할일이 뭔지 보관) : Runnable
+
+    val buyLottoRunnable = object : Runnable {
+        override fun run() {
+
+//            나중에 실행해줄 코드
+
+//            내가 쓸 수 있는 돈이 남아있다면 -> 로또 구매 -> 다시 구매.
+            if (myMoney > 0) {
+                makeWinNumbers()
+                checkLottoRank()
+
+//                다시 실행하도록 => myHandler에게 할일로 등록.
+                myHandler.post(this)
+
+            }
+
+//            돈이 없다면 반복 종료.
+            else {
+                Toast.makeText(this@LottoSimulatorActivity, "자동 구매를 중단합니다.", Toast.LENGTH_SHORT).show()
+//                추가 코드 작성 X. => 이 코드가 끝나고 할일을 다시 등록하지 않는다. => 반복 종료.
+            }
+
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
