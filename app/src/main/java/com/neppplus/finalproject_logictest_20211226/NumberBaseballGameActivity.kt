@@ -1,6 +1,5 @@
 package com.neppplus.finalproject_logictest_20211226
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
@@ -59,6 +58,20 @@ class NumberBaseballGameActivity : BaseActivity() {
         val inputNumber =  inputMessage.toInt()
 
 //        123 -> [1, 2, 3] 목록으로.
+//        첫번째로 추가 : 100의 자리.
+//        두번째로 추가 : 10의 자리.
+//        세번째로 추가 : 1의 자리.
+
+        val myNumbers = ArrayList<Int>()
+
+        myNumbers.add( inputNumber / 100 ) // 123 => 1 추출? 정수 / 정수 : 결과도 정수 (소수점 버림) => 123 / 100 = 1
+        myNumbers.add( inputNumber / 10 % 10 ) // 123 => 2 추출? 123 -> 12로 변환 (10으로 나눈 몫) -> 1의 자리?
+        myNumbers.add( inputNumber % 10 ) // 123 => 3 추출? 10으로 나눈 나머지? 1의 자리.
+
+//        분리 확인용 로그
+        for (num in myNumbers) {
+            Log.d("내 숫자", num.toString())
+        }
 
     }
 
