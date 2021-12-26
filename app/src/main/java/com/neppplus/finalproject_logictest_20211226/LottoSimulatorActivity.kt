@@ -95,6 +95,9 @@ class LottoSimulatorActivity : BaseActivity() {
                 myHandler.post(buyLottoRunnable)
 
                 isAutoNow = true
+                
+//                버튼의 문구도, 자동 구매 중단하기
+                binding.btnAutoMode.text = "자동 구매 중단하기"
 
             }
             else {
@@ -105,6 +108,9 @@ class LottoSimulatorActivity : BaseActivity() {
                 myHandler.removeCallbacks(buyLottoRunnable)
 
                 isAutoNow = false
+                
+//                멈춘 구매 => 이어하기. 
+                binding.btnAutoMode.text = "자동 구매 재개하기"
 
             }
 
