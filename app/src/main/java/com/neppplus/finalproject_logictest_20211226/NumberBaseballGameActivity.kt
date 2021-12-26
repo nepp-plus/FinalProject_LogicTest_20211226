@@ -25,6 +25,24 @@ class NumberBaseballGameActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnSend.setOnClickListener {
+
+            val inputMessage =  binding.edtNumber.text.toString()
+
+//            내가 입력한 내용으로 채팅 화면에 추가
+
+            val myChatData = ChatData( "USER", inputMessage  )
+
+            mChatList.add( myChatData )
+
+//            어댑터에게 새로고침 처리
+            mAdapter.notifyDataSetChanged()
+
+//            숫자 입력칸 비워주기.
+            binding.edtNumber.setText("")
+
+        }
+
     }
 
     override fun setValues() {
